@@ -1,0 +1,20 @@
+Function LoadTempHive()
+	Dim sTempHive
+	Dim sDefaultUserHive
+	
+	sTempHive = """HKEY_USERS\Temp"""
+	sDefaultUserHive = """%USERPROFILE%\..\Default\NTUSER.DAT"""
+
+	oLogging.CreateEntry oUtility.ScriptName & ": Loading the Default User hive",LogTypeInfo
+	
+	oShell.run "reg load " & sTempHive & " " & sDefaultUserHive
+	If Err<>0 Then 
+	  oLogging.CreateEntry oUtility.ScriptName & ": Failed to load the registry hive " & sDefaultUserHive,LogTypeError
+	  LoadTempHive=70
+	  Exit Function
+	End If
+	wscript.sleep 3000
+	oLogging.CreateEntry oUtility.ScriptName & ": Default User Hive Loaded to " & sTempHive,LogTypeInfo
+	
+	LoadTempHive=0
+End Function

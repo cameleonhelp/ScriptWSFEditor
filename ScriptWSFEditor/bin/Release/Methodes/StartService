@@ -1,0 +1,27 @@
+﻿Function StartService(sName, bAuto)
+	Dim objWMIService,colItems
+	Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
+	Set colItems = objWMIService.ExecQuery("Select * from Win32_Service Where Name='" & sName & "'",,48)
+	
+	Dim objItem 'as Win32_Service
+	For Each objItem in colItems
+		If bAuto then
+			objItem.changeStartMode "Automatic"
+		Else
+			objItem.changeStartMode "Manual"
+		End if
+		iRetVal = objItem.StartService()
+	Next
+
+	if (iRetVal = 0) or (iRetVal = 3010) or (iRetVal = 10) then
+		StartService = Success 
+		iRetVal = 0
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from start service = " & iRetVal, LogTypeInfo
+	Else 
+		StartService = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from start service = " & iRetVal, LogTypeError
+	End If		
+	
+	Set colItems = Nothing
+	Set objWMIService = Nothing
+End Function

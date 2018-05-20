@@ -1,0 +1,16 @@
+﻿Function DelHKLMReg(sKeyPath, sRegValue)
+	Dim oReg
+	const HKEY_LOCAL_MACHINE = &H80000002
+	Set oReg=GetObject("winmgmts:\\.\root\default:StdRegProv")
+	
+	iRetVal = oReg.DeleteValue(HKEY_LOCAL_MACHINE,sKeyPath, sRegValue)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		DelHKLMReg = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from registry add command = " & iRetVal, LogTypeInfo
+	Else 
+		DelHKLMReg = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from registry add command = " & iRetVal, LogTypeError
+	End If	
+
+End Function

@@ -1,0 +1,3 @@
+﻿Sub TITI()
+	test = "truc"
+End Sub

@@ -1,0 +1,8 @@
+Function GetEnvVariable(sVar)
+	Dim wshShell,MyVar
+	Set wshShell = CreateObject("WScript.Shell")
+	Set MyVar = wshShell.Environment("PROCESS")
+	Set wshShell = Nothing
+	GetEnvVariable = UCase(MyVar.Item(sVar))
+	Set MyVar = Nothing
+End Function

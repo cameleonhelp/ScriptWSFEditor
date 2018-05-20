@@ -1,0 +1,23 @@
+﻿Function RunAndWait(sFile,sArguments,sExt)
+	If not oFSO.FileExists(sFile) then
+		oLogging.CreateEntry oUtility.ScriptName & ": " & sFile & " was not found, unable to install", LogTypeError
+		RunAndWait = Failure
+		Exit Function
+	End if
+	
+	if (sExt="exe") then
+		iRetVal = oUtility.RunWithHeartbeat("""" & sFile & """ " & sArguments)
+	elseif (sExt="msi") then
+		iRetVal = oUtility.RunWithHeartbeat("msiexec.exe /i """ & sFile & """ " & sArguments)
+	elseif (sExt="vbs") then
+		iRetVal = oUtility.RunWithHeartbeat("cscript.exe """ & sFile & """ " & sArguments)		
+	end if
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		RunAndWait = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from command = " & sFile & " : " & iRetVal, LogTypeInfo
+	Else 
+		RunAndWait = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from command = " & sFile & " : " & iRetVal, LogTypeError
+	End If
+End Function

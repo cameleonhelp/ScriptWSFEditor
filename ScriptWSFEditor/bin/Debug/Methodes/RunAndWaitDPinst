@@ -1,0 +1,19 @@
+Function RunAndWaitDPinst(sFile,sArguments)
+	If not oFSO.FileExists(sFile) then
+		oLogging.CreateEntry oUtility.ScriptName & ": " & sFile & " was not found, unable to install", LogTypeError
+		RunAndWaitDPinst = Failure
+		Exit Function
+	End if
+	
+	iRetVal = oUtility.RunWithHeartbeat("""" & sFile & """ " & sArguments)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) or (iRetVal = 256) then
+		RunAndWaitDPinst = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from command = " & sFile & " : " & iRetVal, LogTypeInfo
+		iRetVal = 0
+	Else 
+		RunAndWaitDPinst = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from command = " & sFile & " : " & iRetVal, LogTypeError
+	End If
+
+End Function

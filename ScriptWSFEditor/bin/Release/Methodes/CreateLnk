@@ -1,0 +1,19 @@
+Function CreateLnk(sLnk,sTarget,sDescr,sIconLocation,sWorkDirectory)
+   Set objShell = WScript.CreateObject("WScript.Shell")
+   Set lnk = objShell.CreateShortcut(sLnk)
+   
+   lnk.TargetPath = sTarget
+   lnk.Arguments = sArg
+   lnk.Description = sDescr
+   lnk.IconLocation = sIconLocation
+   lnk.WindowStyle = "1"
+   lnk.WorkingDirectory = sWorkDirectory
+   lnk.Save
+   If Err<>0 Then
+   		CreateLnk = Err
+   Else
+   		CreateLnk = 0
+   End If
+   'Clean up 
+   Set lnk = Nothing
+End Function

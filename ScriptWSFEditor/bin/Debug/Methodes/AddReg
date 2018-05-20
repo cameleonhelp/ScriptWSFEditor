@@ -1,0 +1,11 @@
+Function AddReg(sRegKey, sNewRegValue)
+	iRetVal=oUtility.regWrite(sregkey, sNewRegValue)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		AddReg = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from registry add command = " & sNewRegValue, LogTypeInfo
+	Else 
+		AddReg = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from registry add command = " & sNewRegValue, LogTypeError
+	End If	
+End Function

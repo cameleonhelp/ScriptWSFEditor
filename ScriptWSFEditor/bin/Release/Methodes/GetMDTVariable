@@ -1,0 +1,3 @@
+Function GetMDTVariable(sVar)
+	GetMDTVariable = oEnvironment.Item(sVar)
+End Function

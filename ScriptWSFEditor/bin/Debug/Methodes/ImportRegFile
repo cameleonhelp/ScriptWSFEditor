@@ -1,0 +1,17 @@
+Function ImportRegFile(sRegFile)
+	If not oFSO.FileExists(sRegFile) then
+		oLogging.CreateEntry oUtility.ScriptName & ": " & sRegFile & " was not found, unable to import", LogTypeError
+		ImportRegFile = Failure
+		Exit Function
+	End if
+	
+	iRetVal = oShell.Run("cmd.exe /c REG.EXE IMPORT " & Chr(34) & sRegFile & Chr(34),0,True)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		ImportRegFile = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from registry import command = " & iRetVal, LogTypeInfo
+	Else 
+		ImportRegFile = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from registry import command = " & iRetVal, LogTypeError
+	End If	
+End Function

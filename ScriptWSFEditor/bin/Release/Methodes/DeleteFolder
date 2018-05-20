@@ -1,0 +1,17 @@
+Function DeleteFolder(sFolder)
+	If not oFSO.FolderExists(sFolder) then
+		oLogging.CreateEntry oUtility.ScriptName & ": " & sFolder & " was not found, unable to delete", LogTypeError
+		DeleteFolder = Failure
+		Exit Function
+	End if
+
+	iRetVal = oFSO.DeleteFolder(sFolder, True)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		DeleteFolder = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code for delete = " & sFolder & " : " & iRetVal, LogTypeInfo
+	Else 
+		DeleteFolder = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code for delete = " & sFolder & " : " & iRetVal, LogTypeError
+	End If
+End Function

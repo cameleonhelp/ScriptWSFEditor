@@ -1,0 +1,71 @@
+<job id="install-[A RENSEIGNER]">
+<script language="VBScript" src="..\..\Scripts\ZTIUtility.vbs"/>
+<script language="VBScript">
+
+Option Explicit
+Dim iRetVal, iRetValCopy
+
+'/ =====METHODES=====
+
+Function RunAndWait(sFile,sArguments,sExt)
+	If not oFSO.FileExists(sFile) then
+		oLogging.CreateEntry oUtility.ScriptName & ": " & sFile & " was not found, unable to install", LogTypeError
+		RunAndWait = Failure
+		Exit Function
+	End if
+	
+	if (sExt="exe") then
+		iRetVal = oUtility.RunWithHeartbeat("""" & sFile & """ " & sArguments)
+	elseif (sExt="msi") then
+		iRetVal = oUtility.RunWithHeartbeat("msiexec.exe /i """ & sFile & """ " & sArguments)
+	elseif (sExt="vbs") then
+		iRetVal = oUtility.RunWithHeartbeat("cscript.exe """ & sFile & """ " & sArguments)		
+	end if
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		RunAndWait = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from command = " & sFile & " : " & iRetVal, LogTypeInfo
+	Else 
+		RunAndWait = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from command = " & sFile & " : " & iRetVal, LogTypeError
+	End If
+End Function
+
+'/ =====FIN METHODES=====
+
+On Error Resume Next
+iRetVal = ZTIProcess
+ProcessResults iRetVal
+On Error Goto 0
+
+Function ZTIProcess()
+	oLogging.CreateEntry oUtility.ScriptName & ": Started installation", LogTypeInfo
+	'/ =====DECLARATIONS=====
+	Dim sSource,sIniSrc,sMsg,sFile,sArguments,sExt
+	
+	sSource = oUtility.ScriptDir & "\Sources\"
+	sIniSrc = "C:\Sncf\Deploiement\AffMessageXPLD\"
+	'/ =====FIN DECLARATIONS=====
+
+	oEnv("SEE_MASK_NOZONECHECKS") = 1
+
+	'/ =====TORUN=====
+
+	'-----ZTIProcess=RunAndWait(sFile,sArguments,sExt)-----
+	sMsg=[A RENSEIGNER]
+	sExt=[A RENSEIGNER]
+	sArguments=[A RENSEIGNER]
+	sFile=[A RENSEIGNER]
+	oLogging.CreateEntry oUtility.ScriptName & ":" & sMsg, LogTypeInfo
+	oLogging.ReportProgress sMsg,[POURCENTAGE]
+	ZTIProcess=RunAndWait(sFile,sArguments,sExt)
+	oLogging.ReportProgress sMsg,[POURCENTAGE]
+
+	'/ =====FIN TORUN=====
+
+	oLogging.CreateEntry oUtility.ScriptName & ": Finished installation", LogTypeInfo
+	oEnv.Remove("SEE_MASK_NOZONECHECKS")
+End Function
+'##### Generated with ScriptWSFEditor - 3.1.1805.24 - e.SNCF Copyright © 2018#####
+</script>
+</job>

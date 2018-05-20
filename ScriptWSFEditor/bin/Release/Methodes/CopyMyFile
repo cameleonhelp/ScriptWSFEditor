@@ -1,0 +1,21 @@
+Function CopyMyFile(sFile, sDest)
+	if not oFSO.FolderExists(sDest) then
+		oFSO.CreateFolder sDest
+	end If
+	
+	If not oFSO.FileExists(sFile) then
+		oLogging.CreateEntry oUtility.ScriptName & ": " & sFile & " was not found, unable to copy", LogTypeError
+		CopyMyFile = Failure
+		Exit Function
+	End if
+
+	iRetVal = oFSO.CopyFile(sFile, sDest, True)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		CopyMyFile = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code for copy = " & sFile & " : " & iRetVal, LogTypeInfo
+	Else 
+		CopyMyFile = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code for copy = " & sFile & " : " & iRetVal, LogTypeError
+	End If
+End Function

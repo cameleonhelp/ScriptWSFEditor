@@ -1,0 +1,12 @@
+Function DisableWindowsDefender()
+	iRetVal=oUtility.regWrite("HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\DisableAntiSpyware", 1)
+	iRetVal=oUtility.regWrite("HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\DisableRoutinelyTakingAction", 1)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		DisableWindowsDefender = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code = " & iRetVal, LogTypeInfo
+	Else 
+		DisableWindowsDefender = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code = " & iRetVal, LogTypeError
+	End If	
+End Function

@@ -1,0 +1,17 @@
+Function DeleteFile(sFile)
+	If not oFSO.FileExists(sFile) then
+		oLogging.CreateEntry oUtility.ScriptName & ": " & sFile & " was not found, unable to delete", LogTypeError
+		DeleteFile = Failure
+		Exit Function
+	End if
+
+	iRetVal = oFSO.DeleteFile(sFile, True)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		DeleteFile = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code for delete = " & sFile & " : " & iRetVal, LogTypeInfo
+	Else 
+		DeleteFile = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code for delete = " & sFile & " : " & iRetVal, LogTypeError
+	End If
+End Function

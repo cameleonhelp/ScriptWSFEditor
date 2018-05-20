@@ -1,0 +1,11 @@
+Function CreateLocalGroup(sName)
+	iRetVal = oUtility.RunWithHeartbeat ("net localgroup Utilisateurs " & sName & " /add")
+
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		CreateLocalGroup = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Create Local Group " & sName & " is successful" , LogTypeInfo
+	Else 
+		CreateLocalGroup = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Create Local Group " & sName & " is fail", LogTypeError
+	End If
+End Function

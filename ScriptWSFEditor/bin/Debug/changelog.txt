@@ -1,0 +1,147 @@
+﻿3.1.1805.140
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Date de publication 20/05/2018
+Modification de cette version :
+	- Recherche des méthodes lors de l'ouverture d'un fichier, pour ne plus les ajouter
+	- Si une méthode est nouvelle récupération et sera cochée puisque déjà existante dans le fichier
+	- Nettoyage du script si nécessaire
+	- possibilité d'afficher le changelog dans le menu Aide/Nouveautés - Aide - A propos
+	- Aide au format CHM
+A venir 
+	- Corrections de bugs ?
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.1.1805.123
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Date de publication 03/05/2018
+Modification de cette version :
+	- Modification de l'IHM pour devenir un éditeur de texte, avec une aide à l'insertion de méthodes et de conditions.
+	- Ajout de la liste des méthodes dans le menu.
+	- Refonte Modification/Suppression des méthodes dans le menu.
+	- Mise en surbrillance de certains mots (géré dans les options)
+	- Ajout d'un menu d'options.
+	- Enregistrement des conditions avec les retours à la ligne et les tabulations.
+	- Révision de la gestion du presse papier.
+	- Ajout d'un menu contextuel Copier/Couper/Coller
+A venir 
+	- Corrections de bugs ?
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.0.1804.0 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Date de publication 27/04/2018
+Modification de cette version :
+	- Modification de l'IHM pour ajouter une barre de menus pour toutes les actions à réaliser.
+	- Par un double click dans la liste des méthodes, vous pouvez ajouter la méthode au script.
+	- Par un double clic ou en appuyant sur la touche Suppr. vous pouvez supprimer la méthode et les variables du script.
+	- En appuyant sur la touche Suppr, vous pouvez supprimer l'exécution dans le script.
+	- Gestion du presse papier.
+	- Impression du script.
+	- Enregistrement du script au format PDF.
+	- Ajout d'un gestionnaire de conditions pour ajouter vos propres conditions et les modifier. Un fichier reg est joint à l'exécutable pour être importer.
+	- Possibilité d'importer ou d'exporter des conditions au format reg.
+	- Affichage de la liste des conditions dans un sous-menu pour les ajouter au script.
+A venir 
+	- Corrections de bugs ?
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.1.1804.4 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Date de publication 27/04/2018
+Modification de cette version :
+	- Correction sur l'ajout des variables utilisées pour déclarer des Objects (ajout même si existe déjà).
+	- gestion des boutons modification et suppression des méthodes.
+	- Nouveau changement de version Major.Minor.YYMM.Revision.
+A venir 
+	- Corrections de bugs ?
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.1.1804.3
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Date de publication 19/04/2018
+Modification de cette version :
+	- Correction sur l'ajout des variables utilisées pour déclarer des Objects (ajout même si existe déjà)
+	- Nouveau changement de version Major.Minor.YYMM.Revision
+A venir 
+	- Corrections de bugs ?
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.1.1804.2
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Date de publication 15/04/2018
+Modification de cette version :
+	- Ajouter une information sur la barre de progression avant et aprés l'exécution des méthodes
+	- Ajouter dans la déclaration des variables, les variables définies par Set obj = ...
+	- Ajouter un bouton pour ajouter avant et après une sélection d'exécution une nouvelle exécution
+	- Correction de bugs mineurs.
+	- Proposer d'enregistrer une méthode qui n'est pas dans le référentiel et qui se trouve dans un ancien fichier.
+	- Amélioration de certaines parties du code :
+		- Ouverture de fichiers anciens ou nouveaux, testé sur des fichiers avec peu d'implémentation et avec beaucoup, avec ou sans utilisation de condition.
+	- Correction lors de la création de l'aperçu avec des méthodes qui remonte sans ZTIProcess = et incomplète
+	- Correction du nettoyage des méthodes et variables qui dans certains cas supprimer la presque totalités des méthodes
+	- L'avancement sera indexé sur le nombre d'exécutions à faire (ex 3 exécutions soit 33% pour chaque).
+	- Si le script est trop ancien, pas de méthodes factorisées, aviser l'utilisateur de faire un nouveau script avec l'application.
+	- Amélioration de la gestion des boutons (désactivés s'ils ne sont pas nécessaires).
+	- Ajout de la possibilité d'ajouter une ligne d'exécution, commentaire, déclaration manuellement.
+	- Ajout d'un bouton d'annulation sur la boite d'information pour la barre de progression, dans ce cas l'utilisateur revient sur la fenêtre initiale.
+A venir 
+	- Corrections de bugs ?
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.1.1804.1
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Date de publication 12/04/2018
+Modification de cette version :
+	- Correction de bugs mineurs.
+	- Correction du bug sur la suppression multiples des méthodes, variables et exécutions existantes.
+	- Correction du bug d'enregistrement si le nom du job est différent du dossier parent.
+	- Correction de l'affichage des différents messages.
+	- Changement de numérotation pour inclure la date de génération sous la forme AAAAMMJJ
+	- Ouverture du fichier dans une fenêtre spécifique.
+	- Possibilité de nettoyer le fichier dans la fenêtre spécifique, des méthodes, variables non utilisées.
+	- Sauvegarde depuis cette fenêtre spécifique.
+	- Création et modification d'une méthode dans le référentiel à partir d'une nouvelle fenêtre.
+	- Tous les fichiers créés par cette applications sont encodés en UTF8.
+	- Suppression du dossier temporaire de travail à la fermeture de l'application.
+A venir 
+	- Corrections de bugs ?
+	- Proposer d'enregistrer une méthode qui n'est pas dans le référentiel et qui se trouve dans un ancien fichier.
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.1.1804.0
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Date de publication 10/04/2018
+Modification de cette version :
+	- Correction de bugs mineurs.
+	- Changement de numérotation pour inclure la date de génération sous la forme AAMMJJ
+	- Lecture des anciens fichiers.
+	- Remontée des erreurs lors de la lecture des fichiers non générés par ce programme.
+	- Possibilité de modifier depuis l'interface les exécutions de code, variables.
+	- Affichage des dernières nouveautés.
+	- Demande d'information pour mettre les logs MDT, mettre à jour la barre de progression MDT dans le script.
+	- Possibilité de modifier l'ordre d'exécution du code.
+	- Possibilité de faire du multichoix dans les listes.
+	- Sauvegarde de la liste des méthodes:
+A venir 
+	- Corrections de bugs ?
+	- Si la méthode n'existe pas dans votre référentiel, alors l'outil vous proposera de l'ajouter.
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.0.1804.0
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Date de publication 08/04/2018
+Véritable première version permettant :
+	- La génération de fichiers WSF à partir d'un référentiel à créer.
+	- Lecture des fichiers générés par l'outil.
+	- Echec à la lecture des fichiers WSF existant.
+A venir :
+	- Corrections de bugs ?
+	- La prise en charge des anciens scripts WSF.
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.0.1804.0
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Date de publication 07/04/2018
+Première version de ScriptWSFEditor avec des controls Metro.
+Abandonné car non concluant.
+-----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,12 @@
+Function RunCmdAndWait(sCmd)
+	iRetVal = oShell.Run("cmd /c " & sCmd,0, true)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		RunCmdAndWait = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from command = " & sCmd & " : " & iRetVal, LogTypeInfo
+	Else 
+		RunCmdAndWait = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from command = " & sCmd & " : " & iRetVal, LogTypeError
+	End If
+
+End Function

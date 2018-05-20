@@ -1,0 +1,36 @@
+<job id="[A RENSEIGNER]">
+<script language="VBScript" src="..\..\Scripts\ZTIUtility.vbs"/>
+<script language="VBScript">
+
+Option Explicit
+Dim iRetVal, iRetValCopy
+
+'/ =====METHODES=====
+
+'/ =====FIN METHODES=====
+
+On Error Resume Next
+iRetVal = ZTIProcess
+ProcessResults iRetVal
+On Error Goto 0
+
+Function ZTIProcess()
+	oLogging.CreateEntry oUtility.ScriptName & ": Started installation", LogTypeInfo
+	'/ =====DECLARATIONS=====
+	Dim sSource,sIniSrc,sMsg
+	
+	sSource = oUtility.ScriptDir & "\Sources\"
+	sIniSrc = "C:\Sncf\Deploiement\AffMessageXPLD\"
+	'/ =====FIN DECLARATIONS=====
+
+	oEnv("SEE_MASK_NOZONECHECKS") = 1
+
+	'/ =====TORUN=====
+
+	'/ =====FIN TORUN=====
+
+	oEnv.Remove("SEE_MASK_NOZONECHECKS")
+	oLogging.CreateEntry oUtility.ScriptName & ": Finished installation", LogTypeInfo
+End Function
+</script>
+</job>

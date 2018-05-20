@@ -1,0 +1,13 @@
+Sub Wait(iTime,sMeasure)
+	dim iWaiting
+	Select Case sMeasure
+		Case "s"
+			iWaiting = iTime*1000
+		Case "ms"
+			iWaiting = iTime
+		Case Else
+			iWaiting = iTime
+	End Select
+	oShell.Sleep iWaiting
+
+End Sub

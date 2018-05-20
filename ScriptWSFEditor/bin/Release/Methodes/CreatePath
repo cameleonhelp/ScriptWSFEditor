@@ -1,0 +1,6 @@
+Sub CreatePath(sPath)
+	If not oFSO.FolderExists(sPath) then
+		CreatePath oFSO.GetParentFolderName(sPath)
+		oFSO.CreateFolder sPath
+	End If
+End Sub

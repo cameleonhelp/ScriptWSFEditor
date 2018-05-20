@@ -1,0 +1,13 @@
+﻿Function DeleteReg(sRegKey)
+	iRetVal=oUtility.regDelete(sRegKey)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		AddReg = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from registry delete command = " & sNewRegValue, LogTypeInfo
+	Else 
+		AddReg = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from registry delete command = " & sNewRegValue, LogTypeError
+	End If
+End Function
+#Méthode générée avec ScriptWSFEditor - 2.0.0.18410
+#Ajouter ci-dessous les méthodes que vous avez utilisées dans votre code en commençant par #D:<Nom de la méthode>

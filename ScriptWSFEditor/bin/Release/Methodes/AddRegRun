@@ -1,0 +1,11 @@
+Function AddRegRun(sRegKey, sNewRegValue)
+	iRetVal=oUtility.regWrite("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\" & sregkey, sNewRegValue)
+	
+	if (iRetVal = 0) or (iRetVal = 3010) then
+		AddRegRun = Success 
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from registry add HKLM-run command = " & sNewRegValue, LogTypeInfo
+	Else 
+		AddRegRun = Failure
+		oLogging.CreateEntry oUtility.ScriptName & ": Return code from registry add HKLM-run command = " & sNewRegValue, LogTypeError
+	End If	
+End Function

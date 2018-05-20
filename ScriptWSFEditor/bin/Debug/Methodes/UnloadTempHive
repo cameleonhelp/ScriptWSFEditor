@@ -1,0 +1,18 @@
+Function UnloadTempHive()
+	Dim sTempHive
+	
+	sTempHive = """HKEY_USERS\Temp"""
+
+	oLogging.CreateEntry oUtility.ScriptName & ": Unloading the Default User hive",LogTypeInfo
+
+	oShell.run "reg unload " & sTempHive
+	If Err<>0 Then 
+	  oLogging.CreateEntry oUtility.ScriptName & ": Failed to unload the default user registry hive " & sDefaultUserHive,LogTypeError
+	  UnloadTempHive=70
+	  Exit Function
+	End If
+	wscript.sleep 3000
+	oLogging.CreateEntry oUtility.ScriptName & ": Default User Hive Unloaded from " & sTempHive,LogTypeInfo
+		
+	UnloadTempHive=0
+End Function
